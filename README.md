@@ -71,7 +71,13 @@ Attributes
     <td><tt>app_opts</tt></td>
     <td>String</td>
     <td>Additional java options</td>
-    <td><tt>nil</tt></td>
+    <td><tt>Empty string</tt></td>
+  </tr>
+  <tr>
+    <td><tt>app_dir</tt></td>
+    <td>String</td>
+    <td>Subdirectory within the repo where the play app is located</td>
+    <td><tt>./</tt></td>
   </tr>
 
 </table>
@@ -115,6 +121,7 @@ Usage
 			application_conf "application.conf"
 			log_file "logger.xml"
 			app_opts "-Xms6144M -Xmx6144M -Xss1M -XX:MaxPermSize=256M"
+			app_dir  "my-play-app"
 		end
 	end
 
