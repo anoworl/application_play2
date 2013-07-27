@@ -15,7 +15,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-include Chef::Resource::ApplicationBase
+include ApplicationCookbook::ResourceBase
 
 attribute :initd_template, :kind_of => [String, NilClass], :default => nil
 attribute :ivy_credentials, :kind_of => [String, NilClass], :default => nil
