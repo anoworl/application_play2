@@ -15,7 +15,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-include Chef::Resource::ApplicationBase
+include ApplicationCookbook::ResourceBase
 
 attribute :initd_template, :kind_of => [String, NilClass], :default => nil
 attribute :ivy_credentials, :kind_of => [String, NilClass], :default => nil
@@ -25,3 +25,4 @@ attribute :http_port, :kind_of => [Integer, NilClass], :default => 80
 attribute :https_port, :kind_of => [Integer, NilClass], :default => nil
 attribute :app_opts, :kind_of => [String, NilClass], :default => ""
 attribute :app_dir, :kind_of => [String, NilClass], :default => ""
+attribute :sub_project, :kind_of => [String, NilClass], :default => nil

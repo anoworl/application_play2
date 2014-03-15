@@ -15,13 +15,14 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-include Chef::Mixin::LanguageIncludeRecipe
+include Chef::DSL::IncludeRecipe
 
 action :before_compile do
 	include_recipe "play2"
 end
 
 action :before_deploy do
+	new_resource = @new_resource
 
 	create_initd
 
@@ -49,7 +50,12 @@ action :before_migrate do
 	unless new_resource.strategy == :dist_remote_file
 	 	bash "compilation-#{new_resource.application.name}" do
 			cwd ::File.join(new_resource.release_path, new_resource.app_dir)
-			code "play clean stage > compilation.log"
+
+			if new_resource.sub_project
+				code "play \"project #{new_resource.sub_project}\" clean dist > compilation_#{new_resource.sub_project}.log"
+			else
+				code "play clean dist > compilation.log"
+			end
 			environment new_resource.environment
 		end	
 	end 
@@ -61,6 +67,8 @@ action :before_restart do
 end
 action :after_restart do
 end
+
+protected
 
 def create_initd
 
