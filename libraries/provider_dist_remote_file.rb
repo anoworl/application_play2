@@ -28,7 +28,7 @@ class Chef
         @release_path = @new_resource.deploy_to + "/releases/" + @new_resource.revision
         chef_gem "rubyzip" do
         end
-        require 'zip/zip'
+        require 'zip'
       end
 
       def action_deploy
@@ -80,11 +80,15 @@ class Chef
 
       def extract
         unzip_file @new_resource.path, @new_resource.deploy_to + "/releases/"
-        FileUtils.chmod "+x", "#{release_path}/start"
+        begin
+          FileUtils.chmod "+x", "#{release_path}/start"
+        rescue
+          Chef::Log.warn("There was no 'start' script in #{release_path}. This may not be a problem.")
+        end
       end
 
       def unzip_file (file, destination)
-        Zip::ZipFile.open(file) { |zip_file|
+        Zip::File.open(file) { |zip_file|
           zip_file.each { |f|
             unless f.directory?
               f_path=::File.join(destination, f.name)
