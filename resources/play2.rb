@@ -25,3 +25,4 @@ attribute :http_port, :kind_of => [Integer, NilClass], :default => 80
 attribute :https_port, :kind_of => [Integer, NilClass], :default => nil
 attribute :app_opts, :kind_of => [String, NilClass], :default => ""
 attribute :app_dir, :kind_of => [String, NilClass], :default => ""
+attribute :sub_project, :kind_of => [String, NilClass], :default => nil

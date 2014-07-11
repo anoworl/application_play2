@@ -79,7 +79,12 @@ Attributes
     <td>Subdirectory within the repo where the play app is located</td>
     <td><tt>./</tt></td>
   </tr>
-
+  <tr>
+    <td><tt>sub_projec</tt></td>
+    <td>String</td>
+    <td>The sub project which is currently being installed, i.e. `play project sub_project run`</td>
+    <td><tt>nil (the main project)</tt></td>
+  </tr>
 </table>
 
 Usage
