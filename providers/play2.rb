@@ -17,6 +17,8 @@
 
 include Chef::DSL::IncludeRecipe
 
+require 'pathname'
+
 action :before_compile do
 	include_recipe "play2"
 end
@@ -24,9 +26,9 @@ end
 action :before_deploy do
 	new_resource = @new_resource
 
-	create_initd
+  create_initd
 
-	if new_resource.ivy_credentials
+  if new_resource.ivy_credentials
 		directory "/root/.ivy2" do
 			mode 00755
 			action :create

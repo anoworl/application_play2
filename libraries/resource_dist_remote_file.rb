@@ -63,6 +63,9 @@ class Chef
       end
 
       def path(args=nil)
+        # These must be primed here?
+        shared_path
+        revision
         set_or_return(
           :path,
           @shared_path + @revision + ".zip",
