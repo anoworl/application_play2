@@ -54,9 +54,9 @@ action :before_migrate do
 			cwd ::File.join(new_resource.release_path, new_resource.app_dir)
 
 			if new_resource.sub_project
-				code "play \"project #{new_resource.sub_project}\" clean dist > compilation_#{new_resource.sub_project}.log"
+				code "activator \"project #{new_resource.sub_project}\" clean dist > compilation_#{new_resource.sub_project}.log"
 			else
-				code "play clean dist > compilation.log"
+				code "activator clean dist > compilation.log"
 			end
 			environment new_resource.environment
 		end	

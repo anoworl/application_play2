@@ -34,7 +34,7 @@ stop() {
     then
         echo -n "Shutting down Play service: ${APPLICATION_PATH}/"
         su $USER -c "ulimit -n 65536"
-        su $USER -c "cd ${APPLICATION_PATH} ; play stop"
+        su $USER -c "cd ${APPLICATION_PATH} ; activator stop"
     fi
     
     RETVAL=$?
