@@ -64,6 +64,9 @@ action :before_migrate do
         EOC
 			end
 			#environment new_resource.environment
+			environment(
+        'JAVA_HOME' => '/usr/lib/jvm/java'
+      )
 		end	
 	end 
 end
