@@ -63,7 +63,7 @@ action :before_migrate do
           activator clean stage &> /tmp/out.txt
         EOC
 			end
-			environment new_resource.environment
+			#environment new_resource.environment
 		end	
 	end 
 end
