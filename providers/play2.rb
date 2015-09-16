@@ -60,7 +60,7 @@ action :before_migrate do
 				code "activator \"project #{new_resource.sub_project}\" clean dist > compilation_#{new_resource.sub_project}.log 2>&1"
 			else
 				code <<-EOC
-          activator clean stage
+          activator clean stage &> /tmp/out.txt
         EOC
 			end
 			environment new_resource.environment
