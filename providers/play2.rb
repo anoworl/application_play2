@@ -51,6 +51,9 @@ end
 action :before_migrate do
 	unless new_resource.strategy == :dist_remote_file
 	 	bash "compilation-#{new_resource.application.name}" do
+      user 'root'
+      group 'root'
+
 			cwd ::File.join(new_resource.release_path, new_resource.app_dir)
 
 			if new_resource.sub_project
