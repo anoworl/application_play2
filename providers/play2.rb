@@ -49,6 +49,7 @@ action :before_deploy do
 end
 
 action :before_migrate do
+  if false
 	unless new_resource.strategy == :dist_remote_file
 	 	bash "compilation-#{new_resource.application.name}" do
       user 'root'
@@ -69,6 +70,7 @@ action :before_migrate do
       )
 		end	
 	end 
+  end
 end
 
 action :before_symlink do
