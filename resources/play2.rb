@@ -20,6 +20,7 @@ include ApplicationCookbook::ResourceBase
 attribute :initd_template, :kind_of => [String, NilClass], :default => nil
 attribute :ivy_credentials, :kind_of => [String, NilClass], :default => nil
 attribute :application_conf, :kind_of => [String, NilClass], :default => nil
+attribute :command, :kind_of => [String, NilClass], :default => nil
 attribute :log_file, :kind_of => [String, NilClass], :default => nil
 attribute :http_port, :kind_of => [Integer, NilClass], :default => 80
 attribute :https_port, :kind_of => [Integer, NilClass], :default => nil

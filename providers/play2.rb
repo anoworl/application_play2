@@ -108,7 +108,7 @@ def create_initd
 			:name => new_resource.application.name,
 			:path => ::File.join(new_resource.application.path, "current", new_resource.app_dir),
 			:options => opts.join(" ") + " " + new_resource.app_opts,
-			:command => new_resource.strategy != :dist_remote_file ? "target/start" : "start"
+			:command => new_resource.command
 		})
 	end
 
