@@ -30,11 +30,11 @@ start() {
 }
 
 stop() {
-    if [ -f $APPLICATION_PATH/RUNNING_PID ]
+    if [ -f $APPLICATION_PATH/target/universal/stage/RUNNING_PID ]
     then
         echo -n "Shutting down Play service: ${APPLICATION_PATH}/"
         su $USER -c "ulimit -n 65536"
-        su $USER -c "cd ${APPLICATION_PATH} ; activator stop"
+        su $USER -c "cd ${APPLICATION_PATH}; kill `cat target/universal/stage/RUNNING_PID`"
     fi
     
     RETVAL=$?
@@ -53,7 +53,7 @@ status() {
 }
 
 clean() {
-        rm -f ${APPLICATION_PATH}/RUNNING_PID
+        rm -f ${APPLICATION_PATH}/target/universal/stage/RUNNING_PID
 }
 case "$1" in
     start)
